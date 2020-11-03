@@ -20,10 +20,27 @@ public class StacksQueues {
 		}
 		size ++;
 	}
-	
+	public boolean isEmpty() {
+		return top == null;
+	}
+	public int peek() {
+		if(isEmpty()) {
+			System.out.println("Stack is Empty");
+		}
+		return top.getData();
+	}
+	public int pop() {
+		if(isEmpty()) {
+			System.out.println("Stack is Empty Cannot Pop");
+		}
+		Node temp = top;
+		top = temp.getNextReference();
+		size--;
+		return temp.getData();
+	}
 	public void display() {
 		System.out.println("Stack: ");
-		if(size == 0) {
+		if(top == null) {
 			System.out.println("Stack is Empty");
 		}
 		while(top !=null) {
@@ -31,13 +48,25 @@ public class StacksQueues {
 			top = top.getNextReference();
 		}
 	}
-	
+	public void popTillEmpty() {
+		while(top != null) {
+			pop();
+		}
+	}
 	public static void main(String[] args) {
 		StacksQueues stacksQueues = new StacksQueues();
 		stacksQueues.push(70);
 		stacksQueues.push(30);
 		stacksQueues.push(56);
 		stacksQueues.display();
+		stacksQueues.push(70);
+		stacksQueues.push(30);
+		stacksQueues.push(56);
+		System.out.println("Top Element :" + stacksQueues.peek());
+		System.out.println("Pop Element : " + stacksQueues.pop());
+		stacksQueues.popTillEmpty();
+		stacksQueues.display();
 	}
 
 }
+
