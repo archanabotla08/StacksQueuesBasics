@@ -43,9 +43,10 @@ public class StacksQueues {
 		if(top == null) {
 			System.out.println("Stack is Empty");
 		}
-		while(top !=null) {
-			System.out.println(top.getData() + " ");
-			top = top.getNextReference();
+		Node temp = top;
+		while(temp !=null) {
+			System.out.println(temp.getData() + " ");
+			temp = temp.getNextReference();
 		}
 	}
 	public void popTillEmpty() {
@@ -59,11 +60,9 @@ public class StacksQueues {
 		stacksQueues.push(30);
 		stacksQueues.push(56);
 		stacksQueues.display();
-		stacksQueues.push(70);
-		stacksQueues.push(30);
-		stacksQueues.push(56);
 		System.out.println("Top Element :" + stacksQueues.peek());
 		System.out.println("Pop Element : " + stacksQueues.pop());
+		stacksQueues.display();
 		stacksQueues.popTillEmpty();
 		stacksQueues.display();
 	}
